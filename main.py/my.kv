@@ -1,0 +1,1045 @@
+WindowManager:
+    LogIn:
+    CreateAccount:
+    WorkMode:
+
+<TextInput>:
+    size_hint: 0.3, 0.1
+
+<Button>:
+    font_size: 30
+    color: 0.3,0.6,0.7,1
+    size_hint: 0.3, 0.1
+    background_color: 0.3,0.4,0.5,1
+
+<LogIn>:
+    name: "login"
+    email: email
+    password: password
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        size: root.width, root.height
+        Button:
+            text: "Log in"
+            pos_hint: {"x": 0.2, "top": 0.3}
+            on_release:
+                root.LoginButton()
+                root.manager.transition.direction = "up"
+
+        Button:
+            text: "New user"
+            pos_hint: {"x":0.5, "top": 0.3}
+            on_release:
+                root.CreateButton()
+                root.manager.transition.direction = "left"
+
+        Label:
+            font_size: 30
+            color: 0,0,0,1
+            size_hint: 0.3, 0.1
+            text: "Enter Email:"
+            pos_hint: {"x": 0.1, "top": 0.9}
+    
+
+        Label:
+            font_size: 30
+            color: 0,0,0,1
+            size_hint: 0.3, 0.1
+            text: "Enter Password:"
+            pos_hint: {"x": 0.1, "top": 0.8}
+     
+
+        TextInput:
+            id: email
+            multiline: False
+            pos_hint: {"x":0.5, "top": 0.9}
+
+        TextInput:
+            id: password
+            multiline: False
+            pos_hint: {"x": 0.5, "top": 0.8}
+
+<CreateAccount>:
+    name: "createaccount"
+    namee: namee
+    password: passw
+    email: email
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        cols:1
+        FloatLayout:
+            Label:
+                font_size: 30
+                color: 0,0,0,1
+                size_hint: 0.3, 0.1
+                text: "Enter Email:"
+                pos_hint: {"x": 0.1, "top": 0.9}
+
+
+            Label:
+                font_size: 30
+                color: 0,0,0,1
+                size_hint: 0.3, 0.1
+                text: "Enter Password:"
+                pos_hint: {"x": 0.1, "top": 0.8}
+    
+
+            Label:
+                font_size: 30
+                color: 0,0,0,1
+                size_hint: 0.3, 0.1
+                text: "Enter Name:"
+                pos_hint: {"x": 0.1, "top": 0.7}
+
+
+            TextInput:
+                id: email
+                multiline: False
+                pos_hint: {"x":0.5, "top": 0.9}
+
+            TextInput:
+                id: passw
+                multiline: False
+                pos_hint: {"x": 0.5, "top": 0.8}
+            
+            TextInput:
+                id: namee
+                multiline: False
+                pos_hint: {"x": 0.5, "top": 0.7}
+
+        Button:
+            pos_hint: {"x":0.2, "top": 0.3}
+            text: "Submit"
+            on_release:
+                root.Submit()
+                app.root.transition.direction = "right"
+
+        Button:
+            pos_hint: {"x":0.5, "top": 0.3}
+            font_size: 20
+            text: "Already have an account? Log In"
+            on_release:
+                root.login()
+                app.root.transition.direction = "right"
+
+<WorkMode>:
+    name: "workmode" 
+    secs: secs
+    secs_out: secs_out
+    xp: xp
+    coins: coins
+    level: level
+    max_xp: max_xp
+    equipped_character: equipped_character
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Image:
+        id: equipped_character
+        source:'character1.1.png'
+        size_hint: 0.2, 0.2
+        pos_hint: {"x": 0.39, "top": 0.67}
+
+    Button: 
+        text: "Log Out"
+        size_hint: 0.05, 0.05
+        pos_hint: {"x": 0.95, "top": 1}
+        on_release:
+            root.logout()
+            root.manager.transition.direction = "down"
+
+    Button:
+        text: "Work"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.1, "top": 0.9}
+        on_release:
+            root.work()
+
+    Button:
+        text: "Shop"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.6, "top": 0.9}
+        on_release:
+            root.shop()
+
+    Button:
+        text: "Inventory"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.2, "top": 0.9}
+        on_release:
+            root.inventory()
+
+    Button:
+        text: "Tasks"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.3, "top": 0.9}
+        on_release:
+            root.tasks()
+
+    Button:
+        text: "Analysis"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.4, "top": 0.9}
+        on_release:
+            root.analysis()
+
+    Button:
+        text: "Settings"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.5, "top": 0.9}
+        on_release:
+            root.settings()
+
+    Button:
+        text: "Start timer"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.45, "top": 0.3}
+        on_release:
+            root.start_thread(secs.text)
+
+    Label:
+        id: secs_out
+        text: 'Timer'
+        size_hint: 0.2, 0.1
+        pos_hint: {"x":0.39, "top": 0.7}
+
+    TextInput:
+        id: secs
+        multiline: False
+        pos_hint: {"x":0.34, "top": 0.5}
+
+    Label:
+        text: 'Coins: '
+        size_hint: 0.1, 0.1
+        pos_hint: {"x":0.8, 'top':0.95}
+    
+    Label:
+        text: 'Level: '
+        size_hint: 0.1,0.1
+        pos_hint: {'x':0.8, 'top':0.9}
+
+    Label:
+        id: level
+        text: '1'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.9}
+
+    Label:
+        id: coins
+        text: '0'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.95}
+
+    Label:
+        id: xp
+        text: '0'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.80,'top':0.88}
+
+    Label:
+        id: max_xp
+        text: '100'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.87,'top':0.88}
+
+    Label:
+        text: 'xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.78,'top':0.88}
+
+    Label:
+        text: 'max xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.84,'top':0.88}
+
+<Shop>
+    name: 'shop'
+    buy_button1: buy_button1
+    buy_button2: buy_button2
+    buy_button3: buy_button3
+    buy_button4: buy_button4
+    level: level
+    coins: coins
+    xp: xp
+    max_xp: max_xp
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Coins: '
+        size_hint: 0.1, 0.1
+        pos_hint: {"x":0.8, 'top':0.95}
+    
+    Label:
+        text: 'Level: '
+        size_hint: 0.1,0.1
+        pos_hint: {'x':0.8, 'top':0.9}
+
+    Label:
+        id: level
+        text: '1'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.9}
+
+    Label:
+        id: coins
+        text: '0'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.95}
+
+    Label:
+        id: xp
+        text: '0'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.80,'top':0.88}
+
+    Label:
+        id: max_xp
+        text: '100'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.87,'top':0.88}
+
+    Label:
+        text: 'xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.78,'top':0.88}
+
+    Label:
+        text: 'max xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.84,'top':0.88}
+
+    Button: 
+        text: "Log Out"
+        size_hint: 0.05, 0.05
+        pos_hint: {"x": 0.95, "top": 1}
+        on_release:
+            root.logout()
+            root.manager.transition.direction = "down"
+
+    Button:
+        text: "Work"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.1, "top": 0.9}
+        on_release:
+            root.work()
+
+    Button:
+        text: "Shop"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.6, "top": 0.9}
+        on_release:
+            root.shop()
+
+    Button:
+        text: "Inventory"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.2, "top": 0.9}
+        on_release:
+            root.inventory()
+
+    Button:
+        text: "Tasks"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.3, "top": 0.9}
+        on_release:
+            root.tasks()
+
+    Button:
+        text: "Analysis"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.4, "top": 0.9}
+        on_release:
+            root.analysis()
+
+    Button:
+        text: "Settings"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.5, "top": 0.9}
+        on_release:
+            root.settings()
+
+    Label:
+        text: 'SHOP'
+        size_hint: 0.2, 0.2
+        pos_hint: {"x": 0.39, "top": 0.8}
+
+    Label:
+        text: 'Character 1: 100 coins'
+        size_hint: 0.2, 0.2
+        pos_hint: {'x': 0.02, "top": 0.7}
+
+    Label:
+        text: 'Character 2: 100 coins'
+        size_hint: 0.2, 0.2
+        pos_hint: {'x': 0.2, "top": 0.7}
+
+    Label:
+        text: 'Character 3: 100 coins'
+        size_hint: 0.2, 0.2
+        pos_hint: {'x': 0.5, "top": 0.7}
+
+    Label:
+        text: 'Character 4: 100 coins'
+        size_hint: 0.2, 0.2
+        pos_hint: {'x': 0.8, "top": 0.7}
+
+    Image:
+        source: 'character2.png'
+        size_hint: 0.2,0.2
+        pos_hint: {'x': 0.02, 'top': 0.6}
+
+    Image:
+        source: 'character3.png'
+        size_hint: 0.2,0.2
+        pos_hint: {'x': 0.2, 'top': 0.6}
+
+    Image:
+        source: 'character4.png'
+        size_hint: 0.2,0.2
+        pos_hint: {'x': 0.5, 'top': 0.6}
+
+    Image:
+        source: 'character5.png'
+        size_hint: 0.2,0.2
+        pos_hint: {'x': 0.8, 'top': 0.6}
+
+    Image:
+        source: 'character1.1.png'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.39, 'top': 0.3}
+
+    Button:
+        id: buy_button1
+        text: 'Buy'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.09, 'top': 0.4}
+        on_release:
+            root.buy1()
+    
+    Button:
+        text: 'Equip'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.09, 'top': 0.35}
+        on_release:
+            root.equip1()
+    
+    Button:
+        id: buy_button2
+        text: 'Buy'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.28, 'top': 0.4}
+        on_release:
+            root.buy2()
+
+    Button:
+        text: 'Equip'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.28, 'top': 0.35}
+        on_release:
+            root.equip2()
+            
+    Button:
+        id: buy_button3
+        text: 'Buy'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.57, 'top': 0.4}
+        on_release:
+            root.buy3()
+
+    Button:
+        text: 'Equip'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.57, 'top': 0.35}
+        on_release:
+            root.equip3()
+
+    Button:
+        id: buy_button4
+        text: 'Buy'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.88, 'top': 0.4}
+        on_release:
+            root.buy4()
+
+    Button:
+        text: 'Equip'
+        size_hint: 0.05,0.05
+        pos_hint: {'x': 0.88, 'top': 0.35}
+        on_release:
+            root.equip4()
+
+    Button:
+        text: 'Equip'
+        size_hint: 0.05,0.05
+        pos_hint: {'x':0.47, 'top':0.1}
+        on_release:
+            root.equip0()
+
+<Inventory>
+    name: 'inventory'
+    level: level
+    coins: coins
+    xp: xp
+    max_xp: max_xp
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Coins: '
+        size_hint: 0.1, 0.1
+        pos_hint: {"x":0.8, 'top':0.95}
+    
+    Label:
+        text: 'Level: '
+        size_hint: 0.1,0.1
+        pos_hint: {'x':0.8, 'top':0.9}
+
+    Label:
+        id: level
+        text: '1'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.9}
+
+    Label:
+        id: coins
+        text: '0'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.95}
+
+    Label:
+        id: xp
+        text: '0'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.80,'top':0.88}
+
+    Label:
+        id: max_xp
+        text: '100'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.87,'top':0.88}
+
+    Label:
+        text: 'xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.78,'top':0.88}
+
+    Label:
+        text: 'max xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.84,'top':0.88}
+
+    Button: 
+        text: "Log Out"
+        size_hint: 0.05, 0.05
+        pos_hint: {"x": 0.95, "top": 1}
+        on_release:
+            root.logout()
+            root.manager.transition.direction = "down"
+
+    Button:
+        text: "Work"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.1, "top": 0.9}
+        on_release:
+            root.work()
+
+    Button:
+        text: "Shop"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.6, "top": 0.9}
+        on_release:
+            root.shop()
+
+    Button:
+        text: "Inventory"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.2, "top": 0.9}
+        on_release:
+            root.inventory()
+
+    Button:
+        text: "Tasks"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.3, "top": 0.9}
+        on_release:
+            root.tasks()
+
+    Button:
+        text: "Analysis"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.4, "top": 0.9}
+        on_release:
+            root.analysis()
+
+    Button:
+        text: "Settings"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.5, "top": 0.9}
+        on_release:
+            root.settings()
+
+    Label:
+        text: 'Your characters: '
+        size_hint: 0.4,0.4
+        pos_hint: {"x": 0.3, "top": 0.8}
+
+<Tasks>
+    name: 'tasks'
+    level: level
+    coins: coins
+    xp: xp
+    max_xp: max_xp
+    task_input: task_input
+    task1: task1
+    task2: task2
+    task3: task3
+    task4: task4
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Coins: '
+        size_hint: 0.1, 0.1
+        pos_hint: {"x":0.8, 'top':0.95}
+    
+    Label:
+        text: 'Level: '
+        size_hint: 0.1,0.1
+        pos_hint: {'x':0.8, 'top':0.9}
+
+    Label:
+        id: level
+        text: '1'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.9}
+
+    Label:
+        id: coins
+        text: '0'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.95}
+
+    Label:
+        id: xp
+        text: '0'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.80,'top':0.88}
+
+    Label:
+        id: max_xp
+        text: '100'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.87,'top':0.88}
+
+    Label:
+        text: 'xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.78,'top':0.88}
+
+    Label:
+        text: 'max xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.84,'top':0.88}
+
+    Button: 
+        text: "Log Out"
+        size_hint: 0.05, 0.05
+        pos_hint: {"x": 0.95, "top": 1}
+        on_release:
+            root.logout()
+            root.manager.transition.direction = "down"
+
+    Button:
+        text: "Work"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.1, "top": 0.9}
+        on_release:
+            root.work()
+
+    Button:
+        text: "Shop"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.6, "top": 0.9}
+        on_release:
+            root.shop()
+
+    Button:
+        text: "Inventory"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.2, "top": 0.9}
+        on_release:
+            root.inventory()
+
+    Button:
+        text: "Tasks"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.3, "top": 0.9}
+        on_release:
+            root.tasks()
+
+    Button:
+        text: "Analysis"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.4, "top": 0.9}
+        on_release:
+            root.analysis()
+
+    Button:
+        text: "Settings"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.5, "top": 0.9}
+        on_release:
+            root.settings()
+
+    Button:
+        text: "Add a task"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.45, "top": 0.58}
+        on_release:
+            root.add_task()
+
+    TextInput:
+        id: task_input
+        multiline: False
+        pos_hint: {"x":0.34, "top": 0.7}
+
+    Label:
+        text: 'To be completed: '
+        size_hint: 0.2,0.2
+        pos_hint: {"x": 0.1, "top": 0.57}
+
+    Label:
+        id: task1
+        text: '-'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.1, 'top':0.5}
+
+    Button:
+        text: 'Completed'
+        size_hint: 0.07,0.07
+        pos_hint: {'x':0.8, 'top':0.45}
+        on_release:
+            root.task1_completed()
+
+    Label:
+        id: task2
+        text: '-'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.1, 'top':0.4}
+
+    Button:
+        text: 'Completed'
+        size_hint: 0.07,0.07
+        pos_hint: {'x':0.8, 'top':0.35}
+        on_release:
+            root.task2_completed()
+
+    Label:
+        id: task3
+        text: '-'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.1, 'top':0.3}
+
+    Button:
+        text: 'Completed'
+        size_hint: 0.07,0.07
+        pos_hint: {'x':0.8, 'top':0.25}
+        on_release:
+            root.task3_completed()
+
+    Label:
+        id: task4
+        text: '-'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.1, 'top':0.2}
+
+    Button:
+        text: 'Completed'
+        size_hint: 0.07,0.07
+        pos_hint: {'x':0.8, 'top':0.15}
+        on_release:
+            root.task4_completed()
+    
+<Analysis>:
+    name: 'analysis'
+    level: level
+    coins: coins
+    xp: xp
+    max_xp: max_xp
+    task_number: task_number
+    session_number: session_number
+    time_number: time_number
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Coins: '
+        size_hint: 0.1, 0.1
+        pos_hint: {"x":0.8, 'top':0.95}
+    
+    Label:
+        text: 'Level: '
+        size_hint: 0.1,0.1
+        pos_hint: {'x':0.8, 'top':0.9}
+
+    Label:
+        id: level
+        text: '1'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.9}
+
+    Label:
+        id: coins
+        text: '0'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.95}
+
+    Label:
+        id: xp
+        text: '0'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.80,'top':0.88}
+
+    Label:
+        id: max_xp
+        text: '100'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.87,'top':0.88}
+
+    Label:
+        text: 'xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.78,'top':0.88}
+
+    Label:
+        text: 'max xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.84,'top':0.88}
+
+    Button: 
+        text: "Log Out"
+        size_hint: 0.05, 0.05
+        pos_hint: {"x": 0.95, "top": 1}
+        on_release:
+            root.logout()
+            root.manager.transition.direction = "down"
+
+    Button:
+        text: "Work"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.1, "top": 0.9}
+        on_release:
+            root.work()
+
+    Button:
+        text: "Shop"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.6, "top": 0.9}
+        on_release:
+            root.shop()
+
+    Button:
+        text: "Inventory"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.2, "top": 0.9}
+        on_release:
+            root.inventory()
+
+    Button:
+        text: "Tasks"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.3, "top": 0.9}
+        on_release:
+            root.tasks()
+
+    Button:
+        text: "Analysis"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.4, "top": 0.9}
+        on_release:
+            root.analysis()
+
+    Button:
+        text: "Settings"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.5, "top": 0.9}
+        on_release:
+            root.settings()
+
+    Label:
+        text: 'Number of sessions: '
+        size_hint: 0.2,0.2
+        pos_hint: {"x": 0.1, "top": 0.7}
+    
+    Label:
+        text: 'Time spent in sessions: '
+        size_hint: 0.2,0.2
+        pos_hint: {"x": 0.7, "top": 0.7}
+
+    Label:
+        text: 'Tasks completed: '
+        size_hint: 0.2,0.2
+        pos_hint: {"x": 0.7, "top": 0.4}
+
+    Label:
+        id: session_number
+        text: '0'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.1, 'top':0.65}
+
+    Label:
+        id: task_number
+        text: '0'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.7, 'top':0.35}
+
+    Label:
+        id: time_number
+        text: '0'
+        size_hint: 0.2,0.2
+        pos_hint: {'x':0.7, 'top':0.65}
+
+<Settings>
+    name: 'settings'
+    level: level
+    coins: coins
+    xp: xp
+    max_xp: max_xp
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.75, 0.7, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Coins: '
+        size_hint: 0.1, 0.1
+        pos_hint: {"x":0.8, 'top':0.95}
+    
+    Label:
+        text: 'Level: '
+        size_hint: 0.1,0.1
+        pos_hint: {'x':0.8, 'top':0.9}
+
+    Label:
+        id: level
+        text: '1'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.9}
+
+    Label:
+        id: coins
+        text: '0'
+        size_hint: 0.1, 0.1
+        pos_hint:{'x':0.82,'top':0.95}
+
+    Label:
+        id: xp
+        text: '0'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.80,'top':0.88}
+
+    Label:
+        id: max_xp
+        text: '100'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.87,'top':0.88}
+
+    Label:
+        text: 'xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.78,'top':0.88}
+
+    Label:
+        text: 'max xp:'
+        size_hint:0.1,0.1
+        pos_hint:{'x':0.84,'top':0.88}
+
+    Button: 
+        text: "Log Out"
+        size_hint: 0.05, 0.05
+        pos_hint: {"x": 0.95, "top": 1}
+        on_release:
+            root.logout()
+            root.manager.transition.direction = "down"
+
+    Button:
+        text: "Work"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.1, "top": 0.9}
+        on_release:
+            root.work()
+
+    Button:
+        text: "Shop"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.6, "top": 0.9}
+        on_release:
+            root.shop()
+
+    Button:
+        text: "Inventory"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.2, "top": 0.9}
+        on_release:
+            root.inventory()
+
+    Button:
+        text: "Tasks"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.3, "top": 0.9}
+        on_release:
+            root.tasks()
+
+    Button:
+        text: "Analysis"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.4, "top": 0.9}
+        on_release:
+            root.analysis()
+
+    Button:
+        text: "Settings"
+        size_hint: 0.07, 0.07
+        pos_hint: {"x": 0.5, "top": 0.9}
+        on_release:
+            root.settings()
