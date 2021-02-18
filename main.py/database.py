@@ -29,7 +29,7 @@ class DataBase():
 
     def add_user(self, email, password, name):
         if email.strip() not in self.users:
-            self.users[email.strip()] = (password.strip(), name.strip(), DataBase.get_date(), 0, 0, [0], 0, 0, 0, '-', '-', '-', '-', 0, 100, 1)
+            self.users[email.strip()] = (password.strip(), name.strip(), DataBase.get_date(), '0', '0', '[0]', '0', '0', '0', '-', '-', '-', '-', '0', '100', '1')
             self.save()
             return 1
         else:
@@ -125,7 +125,7 @@ class DataBase():
                 self.users[user][3] + ';' + self.users[user][4] + ';' + self.users[user][5] + ';' + self.users[user][6] + ';' +
                 self.users[user][7] + ';' + self.users[user][8] + ';' + self.users[user][9] + ';' + self.users[user][10] +
                 ';' + self.users[user][11] + ';' + self.users[user][12] + ';' + self.users[user][13] + ';' + self.users[user][14] + 
-                ';' + self.users[user][15] + '\n')
+                ';' + str(self.users[user][15]) + '\n')
             
     @staticmethod
     def get_date():
